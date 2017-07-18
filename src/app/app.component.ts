@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  title = 'ShopShare';
+
+  clickTest() {
+    alert('thing has been clicked');
+  }
 }
