@@ -11,6 +11,7 @@ declare const $: any;
 export class AppComponent implements OnInit {
 
   title = 'ShopShare';
+  logoutError: string;
 
   // ACTIVE SESSION STATUS
   activeSession:     Boolean = false;
@@ -31,6 +32,7 @@ export class AppComponent implements OnInit {
             console.log(this.clientUser);
         })
         .catch(() => {
+            this.activeSession = false;
             this.RouterControl.navigate(['/']);
         });
 
@@ -92,10 +94,6 @@ export class AppComponent implements OnInit {
     alert('Certifications clicked');
   }
 
-  navigateSetn() {
-    alert('Settings clicked');
-  }
-
 // SORT-BY SECTION
   sortByFacility() {
     $('#sub-menu').children('.item').removeClass('active');
@@ -114,7 +112,7 @@ export class AppComponent implements OnInit {
       $('.ui#login-form')
       .modal('show');
     }
-        register() {
+    register() {
       $('.ui.large.modal#register-form')
       .modal('show');
     }
@@ -123,7 +121,15 @@ export class AppComponent implements OnInit {
       $('.ui.modal').modal('hideDimmer');
     }
 
-
+    endSession() {
+      this.AuthOperator.logout()
+      .catch(() => {
+        this.logoutError = 'Sorry, an error has occured while ending session. Please try again in a moment.';
+      });
+      this.RouterControl.navigate(['']);
+      $('.ui.modal').modal('hide');
+      $('.ui.modal').modal('hideDimmer');
+    }
 
 }
 // Displays jQuery version, and as such, confirms it is working

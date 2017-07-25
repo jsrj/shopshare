@@ -60,4 +60,35 @@ export class AuthService {
         .then(res => res.json());
     }
   ///// -[@]- [ PING ACTIVE SESSION ] ----- -end-
+
+  ///// -[#]- [ END ACTIVE SESSION ] ----- >>>>>
+    logout() {
+    return this.HttpTransport.post(
+        'http://localhost:14500/auth/session/end',
+
+        // Nothing to send to the back end
+        {},
+        {withCredentials: true}
+      )
+      .toPromise()
+      .then(res => res.json());
+    }
+  ///// -[@]- [ END ACTIVE SESSION ] ----- -end-
+
+  ///// -[#]- [ LOG IN PRE-EXISTING USER ] ----- >>>>>
+    // POST login
+    login(theEmail, thePassword) {
+      return this.HttpTransport
+      .post(
+        'http://localhost:14500/auth/login',
+        {
+          loginEmail: theEmail,
+          loginPassword: thePassword
+        },
+        {withCredentials: true}
+      )
+      .toPromise()
+      .then(res => res.json());
+    }
+  ///// -[@]- [ LOG IN PRE-EXISTING USER ] ----- -END-
 }

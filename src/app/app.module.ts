@@ -13,6 +13,11 @@ import { AppComponent } from './app.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { LoginComponent } from './login/login.component';
 import { SupportComponent } from './support/support.component';
+import { ProfileComponent } from './profile/profile.component';
+import { FavoritesComponent } from './left-nav/favorites/favorites.component';
+import { HistoryComponent } from './left-nav/history/history.component';
+import { MessagesComponent } from './left-nav/messages/messages.component';
+import { CertificationsComponent } from './left-nav/certifications/certifications.component';
 
 
 
@@ -21,7 +26,12 @@ import { SupportComponent } from './support/support.component';
     AppComponent,
     RegistrationComponent,
     LoginComponent,
-    SupportComponent
+    SupportComponent,
+    ProfileComponent,
+    FavoritesComponent,
+    HistoryComponent,
+    MessagesComponent,
+    CertificationsComponent
   ],
   imports: [
     BrowserModule,

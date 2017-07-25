@@ -1,0 +1,53 @@
+.userspace {
+  background-color: transparent;
+  border: none !important;
+  border-radius: 5px !important;
+}
+.modalform {
+  background: #2b3e50;
+  border: none !important;
+  border-radius: 5px !important;
+  width: 60vw;
+  margin: 0 auto;
+}
+#user-credentials {
+  padding: 20px;
+}
+
+#user-location {
+  padding: 20px;
+}
+
+.choice-button-container {
+  /* width: 30vw; */
+  margin: 0 auto !important;
+  background: transparent;
+  margin-bottom: 10px !important;
+  margin-top: -1px !important;
+}
+.unified-button {
+  display: flex;
+  justify-content: center;
+  width: 107.06px !important;
+  border: none;
+  border-radius: 5px;
+}
+
+.inner-content {
+  color: black;
+}
+
+.right {
+  float: right;
+}
+
+.left {
+  float: left;
+}
+
+.custom-input {
+  border: none !important;
+  border-radius: 3px !important;
+  color: #2b3e50 !important;
+}
+

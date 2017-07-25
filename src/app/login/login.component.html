@@ -1,3 +1,25 @@
-<p>
-  login works!
-</p>
+<div class="ui card modalform">
+
+    <div class="scrolling content">
+    <form class="ui form" id="user-login">
+      <div class="header"> Sign In &nbsp;|&nbsp; E-Mail </div>
+      <div class="ui horizontal divider"> </div>
+
+      <label for="user-email-input" class="ui label"> Email: </label>
+      <input class="custom-input" type="email" name="loginEmail" id="user-email-input" placeholder="you@shallnotpass.com"
+        [(ngModel)]="loginEmail">
+      <div class="ui hidden divider"></div>
+
+      <label for="user-password-input" class="ui label"> Password: </label>
+      <input class="custom-input" type="password" name="loginPassword" id="user-password-input" placeholder="******"
+        [(ngModel)]="loginPassword">
+      <div class="ui hidden divider"></div>
+    </form>
+    </div>
+
+    <div class="choice-button-container">
+      <button (click)="loginUser(loginEmail, loginPassword)" class="ui right aligned button blue unified-button"> Sign In </button>
+      <button (click)="hideWindow()"             class="ui left aligned button red unified-button">     Cancel </button>
+    </div>
+
+</div>

@@ -7,6 +7,7 @@
 
 #menu-opener {
   font-size: 20px;
+  margin: auto 0;
 }
 
 .userspace {
@@ -64,6 +65,10 @@
   float: left;
 }
 
+.bottom {
+  margin-top: 18rem;
+}
+
 .custom-input {
   border: none !important;
   border-radius: 3px !important;
@@ -99,7 +104,8 @@
   position: bottom;
 }
 
-#main-content {
+.main-content {
+  padding-top: 165px;
   height: 200%;
   width: 100%;
   z-index: 0;
@@ -109,7 +115,7 @@
   font-size: 20px !important;
   color: #2b3e50;
   background: #98D8FF;
-  margin: 2px;
+  margin: 0px 6px 2px 0px;
   border: 3px solid white;
   border-radius: 100%;
 }

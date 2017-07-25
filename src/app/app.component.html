@@ -24,12 +24,12 @@
       <!-- POPOUT NAV MENU -->
         <div class="ui left vertical inverted labeled icon sidebar menu push overlay hidden">
             <a (click)="navigateHome()" class="item"><i class="home icon">         </i> Home           </a>
-            <a (click)="navigateSrvc()" class="item"><i class="block layout icon"> </i> Services       </a>
-            <a (click)="navigateFrnd()" class="item"><i class="smile icon">        </i> Friends        </a>
+            <a (click)="navigateFrnd()" class="item"><i class="bookmark icon">     </i> Favorites      </a>
+            <a (click)="navigateSrvc()" class="item"><i class="cube icon">         </i> Services       </a>
             <a (click)="navigateHist()" class="item"><i class="calendar icon">     </i> History        </a>
             <a (click)="navigateMsgs()" class="item"><i class="mail icon">         </i> Messages       </a>
             <a (click)="navigateCert()" class="item"><i class="trophy icon">       </i> Certifications </a>
-            <a (click)="navigateSetn()" class="item"><i class="settings icon">     </i> Settings       </a>
+            <a (click)="endSession()" class="bottom item"><i class="sign out icon">          </i> Sign Out       </a>
         </div>
       <!-- POPOUT NAV MENU -->
 
@@ -64,7 +64,7 @@
     <p> -->
 
       <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
+<div class='main-content' style="text-align:center">
   <h1>
     Welcome to {{title}}!
   </h1>
@@ -75,13 +75,12 @@
 
 <!-- LOGIN FORM COMPONENT -->
 <div class="ui modal userspace" id="login-form">
-  <h2 class="ui item inner-content">Login Modal Box</h2>
-
+  <app-login></app-login>
 </div>
 <!-- LOGIN FORM COMPONENT -->
 
 <!-- REGISTRATION FORM COMPONENT -->
 <div class="ui large modal userspace" id="register-form">
-  <app-registration>test</app-registration>
+  <app-registration></app-registration>
 </div>
 <!-- REGISTRATION FORM COMPONENT -->
