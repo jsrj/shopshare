@@ -105,3 +105,12 @@
   z-index: 0;
 }
 
+#default-user-icon {
+  font-size: 20px !important;
+  color: #2b3e50;
+  background: #98D8FF;
+  margin: 2px;
+  border: 3px solid white;
+  border-radius: 100%;
+}
+
