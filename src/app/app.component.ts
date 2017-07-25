@@ -1,13 +1,45 @@
-import { Component } from '@angular/core';
-declare var $: any;
+import { AuthService } from './auth.service';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+declare const $: any;
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+
   title = 'ShopShare';
+
+  // ACTIVE SESSION STATUS
+  activeSession:     Boolean = false;
+
+  // Stores Active Client-Side User
+  clientUser: any = {};
+
+    constructor
+  (
+    private AuthOperator:  AuthService,
+    private RouterControl: Router
+  ) { }
+
+  ngOnInit() {
+        this.AuthOperator.checkSession()
+            .then((sessionUser) => {
+            this.clientUser = sessionUser;
+            console.log(this.clientUser);
+        })
+        .catch(() => {
+            this.RouterControl.navigate(['/']);
+        });
+
+        if (this.clientUser !== undefined) {
+          this.activeSession = true;
+        }
+  }
+
+
 
   openMenu() {
     $(document).ready(() => {
@@ -26,7 +58,18 @@ export class AppComponent {
   }
 
   navigateHome() {
-    alert('Home clicked');
+    this.AuthOperator.checkSession()
+            .then((sessionUser) => {
+            this.clientUser = sessionUser;
+            console.log(this.clientUser);
+        })
+        .catch(() => {
+            this.RouterControl.navigate(['/']);
+        });
+
+        if (this.clientUser !== undefined) {
+          this.activeSession = true;
+        }
   }
 
   navigateSrvc() {
@@ -71,10 +114,7 @@ export class AppComponent {
       $('.ui#login-form')
       .modal('show');
     }
-
-
-// Registration Forms Sections
-    register() {
+        register() {
       $('.ui.large.modal#register-form')
       .modal('show');
     }
@@ -82,29 +122,19 @@ export class AppComponent {
       $('.ui.modal').modal('hide');
       $('.ui.modal').modal('hideDimmer');
     }
-    continueToUserLocation() {
-      $('.ui.modal#location-form').modal('show');
-      $('.ui.modal#register-form').modal('hide');
-    }
-    backToCredentials() {
-      $('.ui.modal#register-form').modal('show');
-      $('.ui.modal#location-form').modal('hide');
-    }
-    submitRegistration() {
 
-    }
-// Registration Forms Section
+
 
 }
 // Displays jQuery version, and as such, confirms it is working
 console.log(`jQuery version: ${$.fn.jquery}`);
 
 // Non-(click) UI Events
-  $(document).ready(function() {
-    $('.ui.dropdown').dropdown()
-    ;
-    $('.ui.menu .dropdown').dropdown({on: 'hover'});
-  });
+  // $(document).ready(function() {
+  //   $('.ui.dropdown').dropdown()
+  //   ;
+  //   $('.ui.menu .dropdown').dropdown({on: 'hover'});
+  // });
 
 
 
