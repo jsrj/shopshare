@@ -4,7 +4,7 @@ import { NgModule      } from '@angular/core';
 import { HttpModule    } from '@angular/http';
 import { FormsModule   } from '@angular/forms';
 import { RoutingModule } from './routing/app-routing.module';
-import { FileSelectDirective } from 'ng2-file-upload';
+import { FileUploadModule } from 'ng2-file-upload';
 
 // SERVICES
 import { AuthService   } from './auth.service';
@@ -38,7 +38,6 @@ import { NotificationsListComponent } from './notifications-list/notifications-l
     HistoryComponent,
     MessagesComponent,
     CertificationsComponent,
-    FileSelectDirective,
     HomeComponent,
     ServicesComponent,
     UserMenuComponent,
@@ -49,6 +48,7 @@ import { NotificationsListComponent } from './notifications-list/notifications-l
     BrowserModule,
     RoutingModule,
     FormsModule,
+    FileUploadModule,
     HttpModule
     // FileSelectDirective
   ],

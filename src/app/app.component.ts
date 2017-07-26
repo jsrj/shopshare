@@ -23,6 +23,7 @@ export class AppComponent implements OnInit {
   activeSession:          boolean = this.clientUser.online;
   activeView:             string;
   filteredCategory:       string;
+  searchValue: string;
     constructor
   (
     private AuthOperator:  AuthService,

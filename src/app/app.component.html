@@ -12,7 +12,7 @@
       <div class="ui left aligned category search item">
           <div class="ui transparent icon input">
             <input class="ui item prompt" id="search-bar" type="text" placeholder="Search listings..."
-              [(ngModel)]="searchValue">
+              [ngModel]="searchValue">
             <i class="search link icon" (click)="submitSearch(searchValue)"></i>
           </div>
           <div class="results"></div>
@@ -37,7 +37,7 @@
           <a class="user-menu item" (click)="editProfile()"      ><span class="item-inner-text">Edit Profile </span></a>
           <a class="user-menu item" (click)="viewProfile()"      ><span class="item-inner-text">View Profile </span></a>
           <a class="user-menu item" (click)="viewNotifications()"><span class="item-inner-text">Notifications</span></a>
-          <a class="user-menu item" (click)="helpMenu()"         ><span class="item-inner-text">Support      </span></a>
+          <a class="user-menu item"><span class="item-inner-text">Support      </span></a>
       </div>
     <!-- POPOUT USER MENU -->
 

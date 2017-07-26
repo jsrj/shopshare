@@ -2,7 +2,7 @@ import { AuthService       } from '../auth.service';
 import { Component, OnInit } from '@angular/core';
 import { AppComponent      } from '../app.component';
 import { Router            } from '@angular/router';
-import { FileUploader      } from 'ng2-file-upload';
+// import { FileUploader      } from 'ng2-file-upload';
 import { environment       } from '../../environments/environment';
 declare const $: any;
 
@@ -14,9 +14,9 @@ declare const $: any;
 
 export class LoginComponent implements OnInit {
 
-    myCoolUploader = new FileUploader({
-      url: `${environment.apiBase}/auth/userUploads`
-    });
+    // myCoolUploader = new FileUploader({
+    //   url: `${environment.apiBase}/auth/userUploads`
+    // });
 
   // ACTIVE SESSION STATE
     activeSession: boolean;
@@ -25,6 +25,8 @@ export class LoginComponent implements OnInit {
     loginEmail:    string;
     loginPassword: string;
     clientUser: any = {};
+    upload: any;
+    myCoolUploader: any;
 
   constructor
   (
@@ -62,24 +64,24 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  upload() {
-    this.myCoolUploader.onBuildItemForm = (item, form) => {
-      form.append('loginEmail', this.loginEmail);
-      form.append('loginPassword', this.loginPassword);
-    };
+  // upload() {
+  //   this.myCoolUploader.onBuildItemForm = (item, form) => {
+  //     form.append('loginEmail', this.loginEmail);
+  //     form.append('loginPassword', this.loginPassword);
+  //   };
 
-    this.myCoolUploader.onSuccessItem   = (item, response) => {
-      console.log(response);
-    };
+  //   this.myCoolUploader.onSuccessItem   = (item, response) => {
+  //     console.log(response);
+  //   };
 
-    this.myCoolUploader.onErrorItem     = (item, response) => {
-      console.log('error');
-      console.log(response);
-    };
+  //   this.myCoolUploader.onErrorItem     = (item, response) => {
+  //     console.log('error');
+  //     console.log(response);
+  //   };
 
-    alert('form submitted');
-    this.myCoolUploader.uploadAll();
-  }
+  //   alert('form submitted');
+  //   this.myCoolUploader.uploadAll();
+  // }
 
 
 }
