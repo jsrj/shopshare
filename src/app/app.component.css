@@ -105,10 +105,10 @@
 }
 
 .main-content {
-  padding-top: 165px;
   height: 200%;
   width: 100%;
-  z-index: 0;
+  z-index: 3;
+  padding: 165px 30px;
 }
 
 #default-user-icon {

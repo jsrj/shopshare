@@ -1,0 +1,24 @@
+.card {
+  display: flex;
+  width: 80vw !important;
+  float: right;
+}
+
+.image-tile {
+  border: 1px solid pink;
+  margin: 2% 20px;
+  padding: 30px;
+  display: flex;
+  flex-direction: row;
+  float: left;
+  background: white;
+  width: 100px !important;
+  height: 100px !important;
+}
+
+.content {
+  border: 1px solid blue;
+  margin: 5px;
+  padding: 8px;
+  width: 80vw;
+}

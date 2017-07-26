@@ -1,16 +1,18 @@
+import { AppComponent } from '../app.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { RegistrationComponent } from '../registration/registration.component';
-import { SupportComponent } from '../support/support.component';
+import { SupportComponent      } from '../support/support.component';
+import { ProfileComponent      } from '../profile/profile.component';
 const routes: Routes = [
 {
-  path: '',
-  component: RegistrationComponent
+  path: 'home',
+  component: AppComponent
 },
 {
-  path: 'test',
-  component: SupportComponent
+  path: 'profile',
+  component: ProfileComponent
 }
 ];
 

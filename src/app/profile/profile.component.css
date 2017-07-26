@@ -1,0 +1,7 @@
+#profile-card {
+  clear: both;
+  margin: 0 auto;
+  width:  60vw;
+  height: 80vh;
+  z-index: 0;
+}

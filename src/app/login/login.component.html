@@ -22,4 +22,11 @@
       <button (click)="hideWindow()"             class="ui left aligned button red unified-button">     Cancel </button>
     </div>
 
+<form (ngSubmit)="upload()">
+      <label for="profile-picture-input"> Profile Picture (optional) </label>
+      <input type="file" id="profile-picture-input" name="profilePhoto" ng2FileSelect [uploader]="myCoolUploader">
+      <div class="ui hidden divider"></div>
+
+      <button class="ui button black"> Upload </button>
+</form>
 </div>

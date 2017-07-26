@@ -1,9 +1,18 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Subject    } from 'rxjs/Subject';
+import { Http       } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class AuthService {
+
+// Checks for active User Session
+private loggedInSource = new Subject<any>();
+loggedIn$ = this.loggedInSource.asObservable();
+
+// Reports which listing category user is filtering by
+private filterCategory = new Subject<any>();
+filterBy$ = this.filterCategory.asObservable();
 
   constructor(
     private HttpTransport: Http
@@ -43,23 +52,13 @@ export class AuthService {
             }
           )
           .toPromise()
-          .then(res => res.json());
+          .then(res => res.json())
+          .then((userInfo) => {
+          this.querySession(userInfo);
+          return userInfo;
+        });
       }
   ///// -[@]- [REGISTRATION POST ROUTE] ----- -end-
-
-  ///// -[#]- [ PING ACTIVE SESSION ] ----- >>>>>
-    // GET checklogin
-    checkSession() {
-      return this.HttpTransport.get(
-          'http://localhost:14500/auth/session/check',
-
-          // Allow cross-domain transfer of cookies
-          {withCredentials: true}
-        )
-        .toPromise()
-        .then(res => res.json());
-    }
-  ///// -[@]- [ PING ACTIVE SESSION ] ----- -end-
 
   ///// -[#]- [ END ACTIVE SESSION ] ----- >>>>>
     logout() {
@@ -71,7 +70,11 @@ export class AuthService {
         {withCredentials: true}
       )
       .toPromise()
-      .then(res => res.json());
+      .then(res => res.json())
+      .then((userInfo) => {
+          this.querySession(false);
+          return userInfo;
+        });
     }
   ///// -[@]- [ END ACTIVE SESSION ] ----- -end-
 
@@ -88,7 +91,39 @@ export class AuthService {
         {withCredentials: true}
       )
       .toPromise()
-      .then(res => res.json());
+      .then(res => res.json())
+      .then((userInfo) => {
+          this.querySession(userInfo);
+          return userInfo;
+        });
     }
   ///// -[@]- [ LOG IN PRE-EXISTING USER ] ----- -END-
+
+  querySession(sessionState) {
+    this.loggedInSource.next(sessionState);
+  }
+
+  ///// -[#]- [ PING ACTIVE SESSION ] ----- >>>>>
+    // GET checklogin
+    checkSession() {
+      return this.HttpTransport.get(
+          'http://localhost:14500/auth/session/check',
+
+          // Allow cross-domain transfer of cookies
+          {withCredentials: true}
+        )
+        .toPromise()
+        .then(res => res.json())
+        .then((userInfo) => {
+          this.querySession(userInfo);
+          return userInfo;
+        });
+    }
+  ///// -[@]- [ PING ACTIVE SESSION ] ----- -end-
+
+  // SORT-BY SECTION
+    sortBy(name) {
+      this.filterCategory.next(name);
+    }
+// SORT-BY SECTION
 }
