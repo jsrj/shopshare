@@ -21,6 +21,9 @@ import { MessagesComponent       } from './left-nav/messages/messages.component'
 import { CertificationsComponent } from './left-nav/certifications/certifications.component';
 import { HomeComponent           } from './home/home.component';
 import { ServicesComponent } from './left-nav/services/services.component';
+import { UserMenuComponent } from './conditional/user-menu/user-menu.component';
+import { EditProfileComponent } from './profile/edit-profile/edit-profile.component';
+import { NotificationsListComponent } from './notifications-list/notifications-list.component';
 
 
 
@@ -37,7 +40,10 @@ import { ServicesComponent } from './left-nav/services/services.component';
     CertificationsComponent,
     FileSelectDirective,
     HomeComponent,
-    ServicesComponent
+    ServicesComponent,
+    UserMenuComponent,
+    EditProfileComponent,
+    NotificationsListComponent
   ],
   imports: [
     BrowserModule,

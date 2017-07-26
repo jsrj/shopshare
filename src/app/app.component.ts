@@ -1,6 +1,7 @@
-import { AuthService } from './auth.service';
+import { AuthService       } from './auth.service';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router            } from '@angular/router';
+import { Http              } from '@angular/http';
 declare const $: any;
 
 @Component({
@@ -25,10 +26,14 @@ export class AppComponent implements OnInit {
     constructor
   (
     private AuthOperator:  AuthService,
-    private RouterControl: Router
+    private RouterControl: Router,
+    private HttpTransport: Http
   ) { }
 
   ngOnInit() {
+    $('.ui.dropdown')
+      .dropdown();
+
     this.activeView = 'home';
     this.sortByFacility();
 
@@ -59,7 +64,7 @@ export class AppComponent implements OnInit {
 
 
 
-  toggleMenu() {
+  toggleMenu () {
     $(document).ready(() => {
             $('.left.sidebar')
               .not('.styled')
@@ -75,6 +80,37 @@ export class AppComponent implements OnInit {
     });
   }
 
+  openUserMenu () {
+    $(document).ready(() => {
+            $('.right.sidebar')
+              .not('.styled')
+              .sidebar('setting', {
+                dimPage          : false,
+                transition       : 'overlay',
+                mobileTransition : 'overlay',
+                scrollLock: true,
+                returnScroll: true
+              })
+            ;
+            $('.right.sidebar').not('.styled').sidebar('toggle');
+    });
+  }
+
+// USER MENU CONTROLS
+  editProfile () {
+    this.activeView = 'edit-profile';
+    this.openUserMenu();
+  }
+  viewProfile () {
+    this.activeView = 'profile';
+    this.openUserMenu();
+  }
+  viewNotifications () {
+    this.activeView = 'notifications-list';
+    this.openUserMenu();
+  }
+
+// NAVBAR CONTROLS
   navigateHome() {
     this.activeView = 'home';
     this.toggleMenu();
@@ -138,21 +174,40 @@ export class AppComponent implements OnInit {
       $('#sub-menu').children('.item').removeClass('active');
       $('#facility').addClass('active');
       this.AuthOperator.sortBy('facility');
-      console.log(this.filteredCategory);
+      this.activeView = 'home';
+
   }
 
   sortByEquipmnt() {
       $('#sub-menu').children('.item').removeClass('active');
       $('#equipmnt').addClass('active');
       this.AuthOperator.sortBy('equipment');
-      console.log(this.filteredCategory);
+      this.activeView = 'home';
+
   }
 
   sortByServices() {
       $('#sub-menu').children('.item').removeClass('active');
       $('#services').addClass('active');
       this.AuthOperator.sortBy('services');
-      console.log(this.filteredCategory);
+      this.activeView = 'home';
+
+  }
+
+  submitSearch(param) {
+    // Converts spaces to browser readable characters
+    param = param.split(' ');
+    param = param.join('%20');
+
+    // Removes any reserved URL specific symbols
+    param = param.split('/');
+    param = param.join('');
+    param = param.split('.');
+    param = param.join('');
+
+    const sanitizedParam = param;
+    this.AuthOperator.viewByEquipment(sanitizedParam);
+    console.log(sanitizedParam);
   }
 
 }

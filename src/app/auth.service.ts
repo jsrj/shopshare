@@ -1,6 +1,7 @@
-import { Injectable } from '@angular/core';
-import { Subject    } from 'rxjs/Subject';
-import { Http       } from '@angular/http';
+import { Injectable  } from '@angular/core';
+import { Subject     } from 'rxjs/Subject';
+import { Http        } from '@angular/http';
+import { environment } from '../environments/environment';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
@@ -13,6 +14,10 @@ loggedIn$ = this.loggedInSource.asObservable();
 // Reports which listing category user is filtering by
 private filterCategory = new Subject<any>();
 filterBy$ = this.filterCategory.asObservable();
+
+// Filters by whatever a user searches
+private filterListings = new Subject<any>();
+filteredListings$ = this.filterListings.asObservable();
 
   constructor(
     private HttpTransport: Http
@@ -34,7 +39,7 @@ filterBy$ = this.filterCategory.asObservable();
       ) {
         return this.HttpTransport.post
           (
-            'http://localhost:14500/auth/signup',
+            `${environment.apiBase}/auth/signup`,
             {
               firstName        : firstName,
               lastName         : lastName,
@@ -63,7 +68,7 @@ filterBy$ = this.filterCategory.asObservable();
   ///// -[#]- [ END ACTIVE SESSION ] ----- >>>>>
     logout() {
     return this.HttpTransport.post(
-        'http://localhost:14500/auth/session/end',
+        `${environment.apiBase}/auth/session/end`,
 
         // Nothing to send to the back end
         {},
@@ -83,7 +88,7 @@ filterBy$ = this.filterCategory.asObservable();
     login(theEmail, thePassword) {
       return this.HttpTransport
       .post(
-        'http://localhost:14500/auth/login',
+        `${environment.apiBase}/auth/login`,
         {
           loginEmail: theEmail,
           loginPassword: thePassword
@@ -107,7 +112,7 @@ filterBy$ = this.filterCategory.asObservable();
     // GET checklogin
     checkSession() {
       return this.HttpTransport.get(
-          'http://localhost:14500/auth/session/check',
+          `${environment.apiBase}/auth/session/check`,
 
           // Allow cross-domain transfer of cookies
           {withCredentials: true}
@@ -125,5 +130,17 @@ filterBy$ = this.filterCategory.asObservable();
     sortBy(name) {
       this.filterCategory.next(name);
     }
-// SORT-BY SECTION
+  // SORT-BY SECTION
+
+  viewByEquipment(searchParam) {
+  ///// -[#]- [ VIEW BY EQUIPMENT ] ----- >>>>>
+    return this.HttpTransport.get(
+            `http://localhost:14500/listing/equipment/${searchParam}`,
+          )
+          .subscribe(res => {
+            res.json();
+            console.log(res.json());
+          });
+        }
+  ///// -[@]- [ VIEW BY EQUIPMENT ] ----- -END-
 }

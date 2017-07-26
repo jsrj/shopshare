@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { AppComponent      } from '../app.component';
 import { Router            } from '@angular/router';
 import { FileUploader      } from 'ng2-file-upload';
+import { environment       } from '../../environments/environment';
 declare const $: any;
 
 @Component({
@@ -14,7 +15,7 @@ declare const $: any;
 export class LoginComponent implements OnInit {
 
     myCoolUploader = new FileUploader({
-      url: 'http://localhost:14500/auth/userUploads'
+      url: `${environment.apiBase}/auth/userUploads`
     });
 
   // ACTIVE SESSION STATE

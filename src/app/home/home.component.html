@@ -29,39 +29,35 @@
       <br>
 
       <label for="multi-user"> PPE (Personal Protection Equipment): </label>
-      <span *ngIf="listing.for.facility.multiUser === true">  Multiple users</span>
-      <span *ngIf="listing.for.facility.multiUser === false"> One user only </span>
+      <span *ngIf="listing.for.facility.ppeProvided === true">  Available On-Site </span>
+      <span *ngIf="listing.for.facility.ppeProvided === false"> Bring Own         </span>
       <br>
-  <!-- DO NOT PUT ANY LISTING SPECIFIC ELEMENTS BELOW THIS LINE -->
+
+      <label for="ppe-list"> PPE List: </label>
+      <span *ngFor="let ppeItem of listing.for.facility.ppeList" id="ppe-list">
+        <p> {{ ppeItem }} </p>
+      </span>
+      <br>
+
+      <label for="equipment-list"> Equipment Available: </label>
+      <span *ngFor="let oneItem of listing.for.facility.equipment" id="equipment-list">
+        <p> {{ oneItem }} </p>
+      </span>
+      <br>
+
+      <label for="safety-features"> Safety Features: </label>
+      <span *ngFor="let feature of listing.for.facility.safetyFeatures" id="safety-features">
+        <p> {{ feature }} </p>
+      </span>
+      <br>
+
+      <label for="general-traits"> General Features: </label>
+      <span *ngFor="let trait of listing.for.facility.traits" id="general-traits">
+        <p> {{ trait }} </p>
+      </span>
+      <br>
+      <!-- DO NOT PUT ANY LISTING SPECIFIC ELEMENTS BELOW THIS LINE -->
 
     </div>
 </ul>
-
-<button (click)="consoleOutput()"> Listings </button>
-
-<!-- additionalNotes -->
-
-equipment
-:
-array
-
-<!-- facilitySubType -->
-
-<!-- multiUser -->
-
-ppeList
-:
-Array(3)
-
-ppeProvided
-:
-bool
-
-safetyFeatures
-:
-Array(3)
-
-traits
-:
-Array(5)
 

@@ -2,140 +2,137 @@
   <div id="menu-container">
     <div class="ui inverted menu" id="main-menu">
 
-      <!-- POPOUT MENU TRIGGER BUTTON -->
-        <div (click)="toggleMenu()" class="item mini-menu">
-          <strong class="fa fa-bars" id="menu-opener"_></strong>
-        </div>
-      <!-- POPOUT MENU TRIGGER BUTTON -->
-
-      <!-- LISTINGS SEARCH INTERFACE -->
-        <div class="ui left aligned category search item">
-            <div class="ui transparent icon input">
-              <input class="ui item prompt" id="search-bar" type="text" placeholder="Search listings...">
-              <i class="search link icon"></i>
-            </div>
-            <div class="results"></div>
-        </div>
-      <!-- LISTINGS SEARCH INTERFACE -->
-
-      <!-- CATEGORY SELECT MENU -->
-      <!-- CATEGORY SELECT MENU -->
-
-      <!-- POPOUT NAV MENU -->
-        <div class="ui left vertical inverted labeled icon sidebar menu push overlay hidden">
-            <a (click)="navigateHome()" class="item"><i class="home icon">         </i> Home           </a>
-            <a (click)="navigateFrnd()" class="item"><i class="bookmark icon">     </i> Favorites      </a>
-            <a (click)="navigateSrvc()" class="item"><i class="cube icon">         </i> Services       </a>
-            <a (click)="navigateHist()" class="item"><i class="calendar icon">     </i> History        </a>
-            <a (click)="navigateMsgs()" class="item"><i class="mail icon">         </i> Messages       </a>
-            <a (click)="navigateCert()" class="item"><i class="trophy icon">       </i> Certifications </a>
-
-            <a (click)="endSession()" class="bottom item"><i class="sign out icon"></i> Sign Out       </a>
-        </div>
-      <!-- POPOUT NAV MENU -->
-
-      <!-- RIGHT HAND MENU -->
-        <div id="login" class="ui inverted right aligned menu">
-            <a (click)="helpMenu()" class="item"> Support  </a>
-
-            <a *ngIf="!activeSession" (click)="register()" class="item"> Sign Up  </a>
-            <a *ngIf="!activeSession" (click)="login()"    class="item"> Log In   </a>
-
-            <a *ngIf="activeSession" (click)="loadProfile(clientUser._id)" class="item">
-              <span id="default-user-icon" class="fa fa-user-circle"></span>
-              {{ clientUser.firstName +' '+ clientUser.lastName }}
-            </a>
-
-
-
-        </div>
+    <!-- POPOUT MENU TRIGGER BUTTON -->
+      <div (click)="toggleMenu()" class="item mini-menu">
+        <strong class="fa fa-bars" id="menu-opener"_></strong>
       </div>
+    <!-- POPOUT MENU TRIGGER BUTTON -->
+
+    <!-- LISTINGS SEARCH INTERFACE -->
+      <div class="ui left aligned category search item">
+          <div class="ui transparent icon input">
+            <input class="ui item prompt" id="search-bar" type="text" placeholder="Search listings..."
+              [(ngModel)]="searchValue">
+            <i class="search link icon" (click)="submitSearch(searchValue)"></i>
+          </div>
+          <div class="results"></div>
+      </div>
+    <!-- LISTINGS SEARCH INTERFACE -->
+
+    <!-- POPOUT NAV MENU -->
+      <div class="ui left vertical inverted labeled icon sidebar menu push overlay hidden">
+          <a (click)="navigateHome()" class="item"><i class="home icon">         </i> Home           </a>
+          <a (click)="navigateFrnd()" class="item"><i class="bookmark icon">     </i> Favorites      </a>
+          <a (click)="navigateSrvc()" class="item"><i class="newspaper icon">    </i> My Listings    </a>
+          <a (click)="navigateHist()" class="item"><i class="calendar icon">     </i> History        </a>
+          <a (click)="navigateMsgs()" class="item"><i class="mail icon">         </i> Messages       </a>
+          <a (click)="navigateCert()" class="item"><i class="trophy icon">       </i> Certifications </a>
+
+          <a (click)="endSession()" class="bottom item"><i class="sign out icon"></i> Sign Out       </a>
+      </div>
+    <!-- POPOUT NAV MENU -->
+
+    <!-- POPOUT USER MENU -->
+      <div class="ui right vertical inverted sidebar menu push overlay hidden" id="user-menu">
+          <a class="user-menu item" (click)="editProfile()"      ><span class="item-inner-text">Edit Profile </span></a>
+          <a class="user-menu item" (click)="viewProfile()"      ><span class="item-inner-text">View Profile </span></a>
+          <a class="user-menu item" (click)="viewNotifications()"><span class="item-inner-text">Notifications</span></a>
+          <a class="user-menu item" (click)="helpMenu()"         ><span class="item-inner-text">Support      </span></a>
+      </div>
+    <!-- POPOUT USER MENU -->
+
     <!-- RIGHT HAND MENU -->
+        <div id="login" class="ui inverted right aligned menu">
 
+              <a *ngIf="!activeSession" (click)="register()" class="item"> Sign Up  </a>
+              <a *ngIf="!activeSession" (click)="login()"    class="item"> Log In   </a>
 
+              <a *ngIf="activeSession" class="item" (click)="openUserMenu()">
+                <span id="default-user-icon" class="fa fa-user-circle"></span>
+                {{ clientUser.firstName +' '+ clientUser.lastName }}
+              </a>
+          </div>
+        </div>
+    <!-- RIGHT HAND MENU -->
 
   <!-- SUB-MENU -->
     <div class="ui inverted top attached tabular menu" id="sub-menu">
-      <a (click)="sortByFacility()" id="facility" class="item">  Facilities, Studios & Workshops </a>
-      <a (click)="sortByEquipmnt()" id="equipmnt" class="item">  Equipment Only                  </a>
-      <a (click)="sortByServices()" id="services" class="item">  Services Offered                </a>
+      <a (click)="sortByFacility()" id="facility" class="item">  Facilities</a>
+      <a (click)="sortByEquipmnt()" id="equipmnt" class="item">  Equipment </a>
+      <a (click)="sortByServices()" id="services" class="item">  Services  </a>
     </div>
   <!-- SUB-MENU -->
+
   </div>
 <!--TOP NAV AND SIDE MENU -->
 
 
-  <!-- <div id="main-content" class="scrollable content">
-    <p> -->
+  <!-- MAIN VIEWS -->
+    <div class='main-content'>
 
-      <!--The content below is only a placeholder and can be replaced.-->
-<div class='main-content'>
+      <div *ngIf="activeView === 'profile'">
+        <app-profile>
+        </app-profile>
+      </div>
+
+      <div *ngIf="activeView === 'edit-profile'">
+        <app-edit-profile>
+        </app-edit-profile>
+      </div>
+
+      <div *ngIf="activeView === 'notifications-list'">
+        <app-notifications-list>
+        </app-notifications-list>
+      </div>
+
+      <!-- SupportComponent, -->
+
+      <div *ngIf="activeView === 'home'">
+        <app-home>
+        </app-home>
+      </div>
+
+      <div *ngIf="activeView === 'favorites'">
+        <app-favorites>
+        </app-favorites>
+      </div>
+
+      <div *ngIf="activeView === 'services'">
+        <app-services>
+        </app-services>
+      </div>
+
+      <div *ngIf="activeView === 'history'">
+        <app-history>
+        </app-history>
+      </div>
+
+      <div *ngIf="activeView === 'messages'">
+        <app-messages>
+        </app-messages>
+      </div>
+
+      <div *ngIf="activeView === 'certifications'">
+        <app-certifications>
+        </app-certifications>
+      </div>
+    </div>
   <!-- MAIN VIEWS -->
 
-    <div *ngIf="activeView === 'profile'">
-      <app-profile>
-      </app-profile>
-    </div>
-
-    <!-- SupportComponent, -->
-
-    <div *ngIf="activeView === 'home'">
-      <app-home>
-      </app-home>
-    </div>
-
-    <div *ngIf="activeView === 'favorites'">
-      <app-favorites>
-      </app-favorites>
-    </div>
-
-    <div *ngIf="activeView === 'services'">
-      <app-services>
-      </app-services>
-    </div>
-
-    <div *ngIf="activeView === 'history'">
-      <app-history>
-      </app-history>
-    </div>
-
-    <div *ngIf="activeView === 'messages'">
-      <app-messages>
-      </app-messages>
-    </div>
-
-    <div *ngIf="activeView === 'certifications'">
-      <app-certifications>
-      </app-certifications>
-    </div>
-
-  <!-- MAIN VIEWS -->
-</div>
 
 <!-- LOGIN FORM COMPONENT -->
-<div class="ui modal userspace" id="login-form">
-  <app-login></app-login>
-</div>
-<!-- LOGIN FORM COMPONENT -->
-
-<!-- REGISTRATION FORM COMPONENT -->
-<div class="ui large modal userspace" id="register-form">
-  <app-registration></app-registration>
-</div>
-<!-- REGISTRATION FORM COMPONENT -->
-
-
-  <div class="ui dropdown link item">
-    <span class="text">Shopping</span>
-    <i class="dropdown icon"></i>
-    <div class="menu">
-      <div class="item"> View Profile </div>
-      <div class="item"> Edit Profile </div>
-
-      <div class="divider"></div>
-      <div class="item"> Post A Listing </div>
-      <div class="divider"></div>
-
-      <div class="item"> Sign Out </div>
-    </div>
+  <div class="ui modal userspace" id="login-form">
+    <app-login></app-login>
   </div>
+<!-- LOGIN FORM COMPONENT -->
+
+<!-- REGISTRATION FORM COMPONENT -->
+  <div class="ui large modal userspace" id="register-form">
+    <app-registration></app-registration>
+  </div>
+<!-- REGISTRATION FORM COMPONENT -->
+
+<!-- BACKUP SCRIPT LINKING -->
+  <script src="../assets/libraries/jquery.js"></script>
+  <script src="../assets/libraries/semantic/semantic.js"></script>
+<!-- BACKUP SCRIPT LINKING -->

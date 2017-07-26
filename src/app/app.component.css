@@ -83,7 +83,9 @@
   overflow: hidden;
 }
 #login {
+  display: flex;
   float: right;
+  z-index: 0;
 }
 #main-menu {
   display: flex;
@@ -102,6 +104,23 @@
   box-shadow: 0 3px 8px -1px white !important;
   z-index: 1;
   position: bottom;
+}
+
+#user-menu {
+  margin-top: 50px !important;
+  width: 120px !important;
+  height: fit-content !important;
+  overflow: hidden !important;
+}
+.user-menu.item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #56BFB5 !important;
+  height: 51.38px !important;
+}
+.item-inner-text {
+ margin: auto 0 !important;
 }
 
 .main-content {

@@ -6,6 +6,6 @@ gulp.task('browser-sync', () => {
           // this should be the URL of your ng server
           // e.g. if you ran 'ng server -p 8080'
           // ** More Settings can be configured here too, but for simply working on a mobile-first design, this should suffice **
-          proxy: "localhost:8080"
+          proxy: "localhost:4200"
     });
 });
