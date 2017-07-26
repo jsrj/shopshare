@@ -2,6 +2,7 @@ import { AuthService       } from './auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Router            } from '@angular/router';
 import { Http              } from '@angular/http';
+
 declare const $: any;
 
 @Component({
@@ -11,7 +12,7 @@ declare const $: any;
 })
 export class AppComponent implements OnInit {
 
-  title = 'ShopShare';
+  title = 'BuilderShare';
   logoutError: string;
 
 
@@ -20,10 +21,11 @@ export class AppComponent implements OnInit {
   clientUser: any = {};
 
   // ACTIVE SESSION STATUS
-  activeSession:          boolean = this.clientUser.online;
+  activeSession:          boolean = this.clientUser.online || false;
   activeView:             string;
   filteredCategory:       string;
-  searchValue: string;
+  searchValue:            string;
+
     constructor
   (
     private AuthOperator:  AuthService,
