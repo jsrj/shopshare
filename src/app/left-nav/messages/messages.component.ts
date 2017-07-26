@@ -12,12 +12,42 @@ declare const $: any;
 export class MessagesComponent implements OnInit {
 
   // Stores Active Client-Side User
-  clientUser: any = {};
+  clientUser:    any = {};
+  activeSession: boolean;
 
-  constructor() { }
+  constructor
+  (
+    private AuthOperator:  AuthService,
+    private RouterControl: Router,
+    private HttpTransport: Http
+  ) { }
 
   ngOnInit() {
-    console.log()
+
+    this.AuthOperator.loggedIn$.subscribe((activeUser) => {
+      if (activeUser) {
+        this.clientUser = activeUser;
+        this.activeSession = true;
+      } else {
+        this.activeSession = false;
+        this.clientUser = null;
+      }
+    });
+
+    this.AuthOperator.checkSession ()
+        .then((sessionUser) => {
+        this.activeSession = true;
+        this.clientUser = sessionUser;
+        console.log('sessionUser');
+        console.log(sessionUser);
+        console.log('clientUser messages');
+        console.log(this.clientUser.message);
+    })
+    .catch(() => {
+        this.activeSession = false;
+        console.log('activeSession');
+        console.log(this.activeSession);
+    });
   }
 
 }

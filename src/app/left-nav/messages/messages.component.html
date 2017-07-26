@@ -1,3 +1,12 @@
 <p>
   messages works!
 </p>
+<div *ngFor="let singleMessage of clientUser.message">
+  <p>{{singleMessage.subject}}</p>
+  <p> From: {{singleMessage.author}}&nbsp;&nbsp;|&nbsp;&nbsp;{{singleMessage.userType}} </p>
+  <p> Sent On: {{singleMessage.timestamp}} </p>
+  <p> Message: </p>
+  <br>
+  <br>
+  <pre> {{singleMessage.content}} </pre>
+</div>
