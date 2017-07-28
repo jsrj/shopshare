@@ -1,10 +1,19 @@
 
-<div *ngFor="let singleMessage of clientUser.message">
-  <p>{{singleMessage.subject}}</p>
+<div class="ui raised segment" *ngFor="let singleMessage of clientUser.message">
+  <div class="header">
+  <p>Subject: {{singleMessage.subject}}</p>
+  </div>
+
+  <div class="segment" style="font-size: 9px !important;">
   <p> From: {{singleMessage.author}}&nbsp;&nbsp;|&nbsp;&nbsp;{{singleMessage.userType}} </p>
   <p> Sent On: {{singleMessage.timestamp}} </p>
+  </div>
+  <br>
+  <br>
+  <div class="segment" style="font-size: 10px !important; background: #FFFAAE !important; color: black !important; border: none !important; border-radius: 3px !important; padding: 10px !important;">
   <p> Message: </p>
   <br>
   <br>
-  <pre> {{singleMessage.content}} </pre>
+  <pre style="font-size: 10pt !important;"> {{singleMessage.content}} </pre>
+  </div>
 </div>
