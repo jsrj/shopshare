@@ -1,0 +1,360 @@
+
+  Basic Listing Info
+  <br>
+  <label for="listing-title"> Title: </label>
+  <br>
+    <input type="text"  id="listing-title" name="listingTitle"             [(ngModel)]="listingTitle"> <!-- ** -->
+    <br>
+    <br>
+
+  <label for="listing-type"> Select Listing Type: </label>
+  <br>
+    <select type="text" id="listing-type" name="listingType"              [(ngModel)]="listingType"> <!-- ** -->
+      <option value="facility">  Facility  </option>
+      <option value="equipment"> Equipment </option>
+      <option value="service">   Service   </option>
+    </select>
+    <br>
+    <br>
+
+  <label for="equipment-list"> Equipment Provided: (Separate each item by a comma) </label>
+  <br>
+    <textarea type="text" id="equipment-list" name="equipmentArray"           [(ngModel)]="equipmentArray"></textarea>
+    <br>
+    <br>
+
+    <label for="has-prerequisites"> Has Pre-requisites? </label>
+    <input type="checkbox" id="has-prerequisites" name="listingHasPrerequisites"  [(ngModel)]="listingHasPrerequisites">
+    <br>
+
+
+  Location Data
+  <br>
+    <label for="listing-zip"> Zip Code: </label>
+  <br>
+    <input type="number" id="listing-zip" name="listingZip" [(ngModel)]="listingZip">
+    <br>
+    <br>
+
+  <label for="listing-city"> City: </label>
+  <br>
+    <input type="text" id="listing-city" name="listingCity"                 [(ngModel)]="listingCity">
+    <br>
+    <br>
+
+  <label for="listing-state"> State: </label>
+  <br>
+    <input type="text" name="listingState"                [(ngModel)]="listingState">
+    <br>
+    <br>
+    <label for="listing-country"> Country: </label>
+    <br>
+    <input type="text" id="listing-country" name="listingCountry"              [(ngModel)]="listingCountry">
+    <br>
+    <br>
+
+
+  Price Policy Data
+  <br>
+  <label for="listing-price"> Price: </label>
+  <br>
+    <input type="number" id="listing-price" name="listingPrice"              [(ngModel)]="listingPrice">
+    &nbsp;
+    <label for="listing-per-rate"> Per: </label>
+    &nbsp;
+    <select type="text" id="" name="listingPerRate"            [(ngModel)]="listingPerRate">
+      <option value="hour"> Hour </option>
+      <option value="day" > Day  </option>
+      <option value="week"> Week </option>
+      </select>
+    <br>
+    <br>
+
+    <label for="listing-deposit"> Requires a Deposit?: </label>
+    <br>
+    <input type="checkbox" id="listing-deposit" name="listingDeposit"            [(ngModel)]="listingDeposit">
+    <br>
+    <br>
+
+    <label for="listing-deposit-amount"> If yes, How much?: </label>
+    <br>
+    <input type="number" id="listing-deposit-amount" name="listingDepositAmount"      [(ngModel)]="listingDepositAmount">
+    <br>
+    <br>
+
+    <label for="listing-cancellation-window"> Cancellation Window (in hours): </label>
+    <br>
+    <input type="number" id="listing-cancellation-window" name="listingCancellationWindow" [(ngModel)]="listingCancellationWindow">
+    <br>
+    <br>
+
+
+  General Info
+  <br>
+  <label for="listing-additional-info"> Additional Information: </label>
+  <br>
+    <textarea type="text" id="listing-additional-info" name="listingAdditionalInfo"     [(ngModel)]="listingAdditionalInfo"></textarea>
+    <br>
+    <br>
+
+
+
+  <div *ngIf="listingType === 'facility'">
+    Facility Specific Data
+  <br>
+  <label for="facility-sub-type"> What kind of 'Facility' is it?: </label>
+  <br>
+  <select type="text" id="facility-sub-type" name="facilitySubType"     [(ngModel)]="facilitySubType">
+    <option value="garage"> Garage </option>
+    <option value="workshop"> Workshop </option>
+    <option value="machine shop"> Machine Shop </option>
+    <option value="art studio"> Art Studio </option>
+    <option value="maker space"> Maker Space </option>
+    <option value="soldering station"> Soldering Station </option>
+    <option value="band practice space"> Band Practice Space </option>
+    <option value="other"> Other </option>
+  </select>
+  <br>
+  <br>
+
+  <label for="facility-traits"> List Some Basic Traits of The Place (separated by commas): </label>
+  <br>
+  <textarea type="text" id="facility-traits" name="facilityTraits"      [(ngModel)]="facilityTraits"></textarea>
+  <br>
+  <br>
+
+  <label for="facility-description"> Describe This Facility: </label>
+  <br>
+  <textarea type="text" id="facility-description" name="facilityDescription" [(ngModel)]="facilityDescription"></textarea>
+  <br>
+  <br>
+
+  <label for="is-multi-user"> Can more than one person reserve at a time?: </label>
+  <br>
+  <input type="checkbox" id="is-multi-user" name="facilityIsMultiUser" [(ngModel)]="facilityIsMultiUser">
+  <br>
+  <br>
+
+  <label for="ppe-provided"> Do you provide PPE? (Personal Protection Equipment): </label>
+  <br>
+  <input type="checkbox" id="ppe-provided" name="PPEProvided"         [(ngModel)]="PPEProvided">
+  <br>
+  <br>
+
+  <label for="ppe-list"> If yes, what? (separated by commas): </label>
+  <br>
+  <input type="text" id="ppe-list" name="PPEList"             [(ngModel)]="PPEList">
+  <br>
+  <br>
+
+  <label for="safety-features"> List some safety features (separated by commas): </label>
+  <br>
+  <input type="text" name="safetyFeatures"      [(ngModel)]="safetyFeatures">
+  <br>
+  <br>
+
+  <label for="additional-notes"> Anything else you want to add?: </label>
+  <br>
+  <input type="text" name="additionalNotes"     [(ngModel)]="additionalNotes">
+  <br>
+  <br>
+    <button (click)='generateListing
+    (
+      listingTitle             ,
+      listingType              ,
+      equipmentArray           ,
+      listingHasPrerequisites  ,
+
+      listingZip               ,
+      listingCity              ,
+      listingState             ,
+      listingCountry           ,
+      listingPrice             ,
+      listingPerRate           ,
+      listingDeposit           ,
+      listingDepositAmount    ,
+      listingCancellationWindow,
+      listingAdditionalInfo    ,
+
+      "facility"               ,
+
+      facilitySubType          ,
+      facilityTraits           ,
+      facilityDescription      ,
+      facilityIsMultiUser      ,
+      PPEProvided              ,
+      PPEList                  ,
+      safetyFeatures           ,
+      additionalNotes          ,
+
+      "null"                     ,
+      "null"                     ,
+      "null"                     ,
+      "null"                     ,
+      "null"                     ,
+      "null"                     ,
+
+      "null"                     ,
+      "null"                     ,
+      "null"
+    )'> Create Facility Listing
+  </button>
+  </div>
+<br>
+<br>
+<div *ngIf="listingType === 'equipment'">
+  Equipment Specific Data
+  <br>
+  <label for="power-type"> Equipment Power Type: </label>
+  <br>
+  <select type="text" id="power-type" name="powerType"             [(ngModel)]="powerType">
+    <option value="hand-powered"> Hand Powered </option>
+    <option value="electric"> Electric         </option>
+    <option value=" air / Pneumatic "> Air / Pneumatic hydraulic</option>
+    <option value="hydraulic"> Hydraulic </option>
+    <option value="foot-powered"> Foot Powered </option>
+    <option value="other"> Other </option>
+  </select>
+  <br>
+  <br>
+
+  <label for="restricted-equipment"> Is the usage of this equipment legally restricted (in any way)?: </label>
+  <br>
+  <input type="checkbox" id="restricted-equipment" name="equipmentIsRestricted" [(ngModel)]="equipmentIsRestricted">
+  <br>
+  <br>
+
+  <label for="required-liscense"> Requires a liscense to use: </label>
+  <br>
+  <input type="checkbox" id="required-liscense" name="requiredLiscense"      [(ngModel)]="requiredLiscense">
+  <br>
+  <br>
+
+  <label for="is-portable"> Is this portable?: </label>
+  <br>
+  <input type="checkbox" id="is-portable" name="isPortable"            [(ngModel)]="isPortable">
+  <br>
+  <br>
+
+  <label for="is-hazardous"> Is this classified as 'Hazardous'?: </label>
+  <br>
+  <input type="checkbox" id="is-hazardous" name="isHazardous"           [(ngModel)]="isHazardous">
+  <br>
+  <br>
+
+  <label for="extra-info"> Any other details you want to provide?: </label>
+  <br>
+  <input type="text" id="extra-info" name="extras"                [(ngModel)]="extras">
+  <br>
+  <br>
+    <button (click)='generateListing
+    (
+      listingTitle           ,
+      listingType            ,
+      equipmentArray         ,
+      listingHasPrerequisites,
+
+      listingZip                ,
+      listingCity               ,
+      listingState              ,
+      listingCountry            ,
+      listingPrice              ,
+      listingPerRate            ,
+      listingDeposit            ,
+      listingDepositAmount     ,
+      listingCancellationWindow ,
+      listingAdditionalInfo     ,
+
+      "equipment",
+
+      "null",
+      "null",
+      "null",
+      "null",
+      "null",
+      "null",
+      "null",
+      "null",
+
+      powerType             ,
+      equipmentIsRestricted ,
+      requiredLiscense      ,
+      isPortable            ,
+      isHazardous           ,
+      extras                ,
+
+      "null",
+      "null",
+      "null"
+    )'> Create Equipment Listing
+  </button>
+<br>
+</div>
+
+<div *ngIf="listingType === 'service'">
+<br>
+  Service Specific Data
+  <br>
+  <label for="is-physical-location"> Is This Service Available Online too?:</label>
+  <br>
+  <input type="checkbox" id="is-physical-location" name="isPhysicalLocation"   [(ngModel)]="isPhysicalLocation">
+  <br>
+  <br>
+
+  <label for="skills-offered"> What Skills do you offer with this service?(separate by commas): </label>
+  <br>
+  <textarea type="text" id="skills-offered" name="skillsOffered"       [(ngModel)]="skillsOffered"></textarea>
+  <br>
+  <br>
+
+  <label for="service-description"> Describe the service you are offering: </label>
+  <br>
+  <textarea type="text" name="serviceDescription"  [(ngModel)]="serviceDescription"></textarea>
+  <br>
+  <br>
+    <button (click)='generateListing
+    (
+      listingTitle            ,
+      listingType             ,
+      equipmentArray          ,
+      listingHasPrerequisites ,
+
+      listingZip                ,
+      listingCity               ,
+      listingState              ,
+      listingCountry            ,
+      listingPrice              ,
+      listingPerRate            ,
+      listingDeposit            ,
+      listingDepositAmount     ,
+      listingCancellationWindow ,
+      listingAdditionalInfo     ,
+
+      "service",
+
+      "null",
+      "null",
+      "null",
+      "null",
+      "null",
+      "null",
+      "null",
+      "null",
+
+      "null",
+      "null",
+      "null",
+      "null",
+      "null",
+      "null",
+
+      isPhysicalLocation ,
+      skillsOffered      ,
+      serviceDescription
+    )'> Create Service Listing
+  </button>
+  <br>
+</div>
+<br>
+
+

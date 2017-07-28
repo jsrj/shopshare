@@ -25,11 +25,12 @@ export class HomeComponent implements OnInit {
     filteredCategory: string = 'facility';
 
   ngOnInit() {
-    this.AuthOperator.sortBy('facility');
 
+    // this.AuthOperator.sortBy('facility');
     this.AuthOperator.filterBy$.subscribe((category) => {
       this.filteredCategory = category;
     });
+    console.log(this.filteredCategory);
 
     this.AuthOperator.filteredListings$.subscribe((filterResults) => {
       this.filteredListings = filterResults;
@@ -46,6 +47,34 @@ export class HomeComponent implements OnInit {
           )
           .subscribe(res => {
             this.allListings = res.json();
+            this.allListings.forEach((listing) => {
+
+            if (typeof listing.for.facility.ppeList === 'string') {
+              const array = [];
+              array.push(listing.for.facility.ppeList);
+              listing.for.facility.ppeList = array;
+            }
+
+            if (typeof listing.equipment === 'string') {
+              const array = [];
+              array.push(listing.equipment);
+              listing.equipment = array;
+            }
+
+            if (typeof listing.for.facility.safetyFeatures === 'string') {
+              const array = [];
+              array.push(listing.for.facility.safetyFeatures);
+              listing.for.facility.safetyFeatures = array;
+            }
+
+            if (typeof listing.for.facility.traits === 'string') {
+              const array = [];
+              array.push(listing.for.facility.traits);
+              listing.for.facility.traits = array;
+            }
+
+              });
+            console.log(this.allListings);
           });
         }
   consoleOutput() {

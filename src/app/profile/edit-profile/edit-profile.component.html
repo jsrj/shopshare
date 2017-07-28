@@ -1,3 +1,46 @@
-<p>
-  edit-profile works!
-</p>
+ <div class="ui card modalform">
+<div class="header"> The Basics </div>
+  <label for="first-name"> First Name: </label>
+  <input type="text" id="first-name" name="firstName" placeholder="{{ clientUser.firstName }}" style="color: black;">
+  <br>
+  <br>
+
+  <label for="last-name"> Last Name: </label>
+  <input type="text" id="last-name" name="lastName" placeholder="{{ clientUser.lastName }}" style="color: black;">
+  <br>
+  <br>
+
+  <label for="user-name"> User Name: </label>
+  <input type="text" id="user-name" name="userName" placeholder="{{ clientUser.userName }}" style="color: black;">
+  <br>
+  <br>
+
+  <label for="email"> Email: </label>
+  <input type="text" id="email" name="email" placeholder="{{ clientUser.email }}" style="color: black;">
+  <br>
+  <br>
+
+  <label for="user-phone"> Phone: </label>
+  <input type="text" id="user-phone" name="userPhone" placeholder="{{ clientUser.phone }}" style="color: black;">
+  <br>
+  <br>
+    </div>
+<br>
+<br>
+<br>
+
+    <form class="ui form modalform">
+    <div class="header"> Your Story </div>
+
+    <label for="user-summary"> Write a brief summary of yourself: </label>
+    <br>
+    <textarea class="ui textarea" type="textarea" id="user-summary" name="userSummary" placeholder="{{ clientUser.summary }}"></textarea>
+    <button></button>
+    </form>
+
+
+
+<!-- BACKUP SCRIPT LINKING -->
+  <script src="../assets/libraries/jquery.js"></script>
+  <script src="../assets/libraries/semantic/semantic.js"></script>
+<!-- BACKUP SCRIPT LINKING -->

@@ -2,6 +2,7 @@ import { AuthService       } from './auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Router            } from '@angular/router';
 import { Http              } from '@angular/http';
+import { environment       } from '../environments/environment';
 
 declare const $: any;
 
@@ -146,6 +147,11 @@ export class AppComponent implements OnInit {
     this.toggleMenu();
   }
 
+  newListing() {
+    this.activeView = 'new-listing';
+    this.toggleMenu();
+  }
+
 
     login() {
       $('.ui#login-form')
@@ -176,24 +182,27 @@ export class AppComponent implements OnInit {
   sortByFacility() {
       $('#sub-menu').children('.item').removeClass('active');
       $('#facility').addClass('active');
-      this.AuthOperator.sortBy('facility');
       this.activeView = 'home';
+      this.AuthOperator.sortBy('facility');
+
 
   }
 
   sortByEquipmnt() {
       $('#sub-menu').children('.item').removeClass('active');
       $('#equipmnt').addClass('active');
-      this.AuthOperator.sortBy('equipment');
       this.activeView = 'home';
+      this.AuthOperator.sortBy('equipment');
+
 
   }
 
   sortByServices() {
       $('#sub-menu').children('.item').removeClass('active');
       $('#services').addClass('active');
-      this.AuthOperator.sortBy('services');
       this.activeView = 'home';
+      this.AuthOperator.sortBy('service');
+
 
   }
 

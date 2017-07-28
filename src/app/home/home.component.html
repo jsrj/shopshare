@@ -1,5 +1,5 @@
 <p>
-  ALL The Listings
+  ALL the {{ filteredCategory }} listings
 </p>
 
 <hr>
@@ -7,12 +7,15 @@
 <ul class="container" *ngFor="let listing of allListings">
     <div *ngIf="listing.type === filteredCategory">
 
-
   <!-- DO NOT PUT ANY LISTING SPECIFIC ELEMENTS ABOVE THIS LINE -->
-      {{ listing.title }}&nbsp;&nbsp; | &nbsp;&nbsp;{{ listing.type  }}
-
-      <label for="facility-type"> Facility Type: </label>
-      <span id="facility-type">{{ listing.for.facility.facilitySubType }}      </span>
+  <!-- FACILITIES -->
+  <div *ngIf="filteredCategory === 'facility'">
+      {{ listing.title }}&nbsp;&nbsp; | &nbsp;&nbsp;
+      <span id="facility-type">{{ listing.for.facility.facilitySubType }} </span>
+      <br>
+      <span>By: {{ listing.provider }}</span>
+      <br>
+      <span> {{listing.location.city}}, {{listing.location.state}}</span>
       <br>
 
       <label for="facility-description"> Facility Description: </label>
@@ -25,37 +28,107 @@
 
       <label for="multi-user"> Reservable By: </label>
       <span *ngIf="listing.for.facility.multiUser === true">  Multiple users</span>
-      <span *ngIf="listing.for.facility.multiUser === false"> One user only </span>
+      <span *ngIf="listing.for.facility.multiUser === false
+        || listing.for.facility.multiUser === undefined"> One user only </span>
       <br>
 
       <label for="multi-user"> PPE (Personal Protection Equipment): </label>
       <span *ngIf="listing.for.facility.ppeProvided === true">  Available On-Site </span>
-      <span *ngIf="listing.for.facility.ppeProvided === false"> Bring Own         </span>
+      <span *ngIf="listing.for.facility.ppeProvided === false
+        || listing.for.facility.ppeProvided === undefined"> Bring Own         </span>
+      <br>
       <br>
 
-      <label for="ppe-list"> PPE List: </label>
-      <span *ngFor="let ppeItem of listing.for.facility.ppeList" id="ppe-list">
-        <p> {{ ppeItem }} </p>
-      </span>
-      <br>
+      <div *ngIf="listing.for.facility.ppeList.length !== 0">
+        <label for="ppe-list"> PPE List: </label>
+          <span *ngFor="let ppeItem of listing.for.facility.ppeList" id="ppe-list">
+            <p> {{ ppeItem }} </p>
+          </span>
+        <br>
+      </div>
 
-      <label for="equipment-list"> Equipment Available: </label>
-      <span *ngFor="let oneItem of listing.for.facility.equipment" id="equipment-list">
-        <p> {{ oneItem }} </p>
-      </span>
-      <br>
+      <div *ngIf="listing.equipmentProvided.length !== 0">
+        <label for="equipment-list"> Equipment Available: </label>
+          <span *ngFor="let oneItem of listing.equipmentProvided" id="equipment-list">
+            <p> {{ oneItem }} </p>
+          </span>
+        <br>
+      </div>
 
+    <div *ngIf="listing.for.facility.safetyFeatures.length !== 0">
       <label for="safety-features"> Safety Features: </label>
-      <span *ngFor="let feature of listing.for.facility.safetyFeatures" id="safety-features">
-        <p> {{ feature }} </p>
-      </span>
+        <span *ngFor="let feature of listing.for.facility.safetyFeatures" id="safety-features">
+          <p> {{ feature }} </p>
+        </span>
+      <br>
+    </div>
+
+    <div *ngIf="listing.for.facility.traits.length !== 0">
+      <label for="general-traits"> General Features: </label>
+        <span *ngFor="let trait of listing.for.facility.traits" id="general-traits">
+          <p> {{ trait }} </p>
+        </span>
+        <br>
+    </div>
+
+      <br>
+      </div>
+
+    <!-- EQUIPMENT -->
+    <div *ngIf="filteredCategory === 'equipment'">
+      {{ listing.title }}&nbsp;&nbsp; | &nbsp;&nbsp;
+      <span id="facility-type">{{ listing.for.equipment.powerType }} </span>
+      <br>
+      <span>By: {{ listing.provider }}</span>
+      <br>
+      <span> {{listing.location.city}}, {{listing.location.state}}</span>
       <br>
 
-      <label for="general-traits"> General Features: </label>
-      <span *ngFor="let trait of listing.for.facility.traits" id="general-traits">
-        <p> {{ trait }} </p>
-      </span>
+      <label for="facility-description"> Equipment Description: </label>
+      <span   id="facility-description">{{ listing.additionalInfo }}</span>
       <br>
+
+      <label for="facility-notes"> Additional Notes: </label>
+      <span   id="facility-notes">{{ listing.for.equipment.extras }}</span>
+      <br>
+
+      <label for="multi-user"> Subject to legal regulation: </label>
+      <span *ngIf="listing.for.equipment.isRestricted === true">  Restricted </span>
+      <span *ngIf="listing.for.equipment.isRestricted === false
+        || listing.for.equipment.isRestricted === undefined"> Not Restricted </span>
+      <br>
+
+      <label for="multi-user"> Classfied as hazardous: </label>
+      <span *ngIf="listing.for.equipment.isHazardous === true">  Yes </span>
+      <span *ngIf="listing.for.equipment.isHazardous === false
+        || listing.for.equipment.isHazardous === undefined"> No </span>
+      <br>
+      <br>
+    </div>
+
+  <!-- SERVICE -->
+    <div *ngIf="filteredCategory === 'service'">
+      {{ listing.title }}&nbsp;&nbsp; | &nbsp;&nbsp;
+      <span *ngIf="listing.for.service.physicalOnly === true"> Online </span>
+      <span *ngIf="listing.for.service.physicalOnly === false
+        || listing.for.service === undefined"> Physical Location </span>
+      <br>
+      <br>
+
+      <span>By: {{ listing.provider }}</span>
+      <br>
+      <span> {{listing.location.city}}, {{listing.location.state}}</span>
+      <br>
+
+      <label for="facility-notes"> Service Description: </label>
+      <span   id="facility-notes">{{ listing.for.service.description }}</span>
+      <br>
+
+      <label for="facility-description"> Additional Info: </label>
+      <span   id="facility-description">{{ listing.additionalInfo }}</span>
+      <br>
+
+    </div>
       <!-- DO NOT PUT ANY LISTING SPECIFIC ELEMENTS BELOW THIS LINE -->
 
     </div>

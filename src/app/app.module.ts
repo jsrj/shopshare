@@ -24,6 +24,7 @@ import { ServicesComponent } from './left-nav/services/services.component';
 import { UserMenuComponent } from './conditional/user-menu/user-menu.component';
 import { EditProfileComponent } from './profile/edit-profile/edit-profile.component';
 import { NotificationsListComponent } from './notifications-list/notifications-list.component';
+import { NewListingComponent } from './home/new-listing/new-listing.component';
 
 
 
@@ -42,7 +43,8 @@ import { NotificationsListComponent } from './notifications-list/notifications-l
     ServicesComponent,
     UserMenuComponent,
     EditProfileComponent,
-    NotificationsListComponent
+    NotificationsListComponent,
+    NewListingComponent
   ],
   imports: [
     BrowserModule,
