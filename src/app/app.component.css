@@ -80,6 +80,7 @@
   flex-direction: column;
   position: fixed;
   overflow: hidden;
+  z-index: 10 !important;
 }
 #login {
   display: flex;
