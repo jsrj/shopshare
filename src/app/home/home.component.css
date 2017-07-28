@@ -22,3 +22,15 @@
   padding: 8px;
   width: 80vw;
 }
+
+.stylish {
+  background: #6894af !important;
+  border: none !important;
+  border-radius: 3px !important;
+  padding: 5px !important;
+}
+
+.image {
+  display: flex !important;
+  z-index: 8 !important;
+}

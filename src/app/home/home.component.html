@@ -2,6 +2,8 @@
   ALL the {{ filteredCategory }} listings
 </p>
 
+
+
 <hr>
 
 <ul class="container" *ngFor="let listing of allListings">
@@ -9,7 +11,36 @@
 
   <!-- DO NOT PUT ANY LISTING SPECIFIC ELEMENTS ABOVE THIS LINE -->
   <!-- FACILITIES -->
-  <div *ngIf="filteredCategory === 'facility'">
+  <div class="ui items" *ngIf="filteredCategory === 'facility'">
+
+  <div class="item stylish">
+    <div class="image">
+      <img src="http://lorempixel.com/120/120" />
+    </div>
+    <div class="content">
+      <a class="header">
+        {{ listing.title }}&nbsp;&nbsp; | &nbsp;&nbsp;
+        <span id="facility-type">{{ listing.for.facility.facilitySubType }} </span>
+        <br>
+        <span>By: {{ listing.provider }}</span>
+        <br>
+        <span> {{listing.location.city}}, {{listing.location.state}}</span>
+        <br>
+      </a>
+
+      <div class="meta">
+        <span>Description</span>
+      </div>
+      <div class="description">
+      <span   id="facility-description">{{ listing.for.facility.description }}</span>
+      <br>
+      </div>
+      <div class="extra">
+        <button class="ui blue button">Additional Details</button>
+      </div>
+    </div>
+  </div>
+<!--
       {{ listing.title }}&nbsp;&nbsp; | &nbsp;&nbsp;
       <span id="facility-type">{{ listing.for.facility.facilitySubType }} </span>
       <br>
@@ -69,13 +100,20 @@
           <p> {{ trait }} </p>
         </span>
         <br>
-    </div>
+    </div> -->
 
       <br>
       </div>
 
     <!-- EQUIPMENT -->
-    <div *ngIf="filteredCategory === 'equipment'">
+    <div class="ui items" *ngIf="filteredCategory === 'equipment'">
+
+        <div class="item stylish">
+    <div class="image">
+      <img src="http://lorempixel.com/120/120" />
+    </div>
+    <div class="content">
+      <a class="header">
       {{ listing.title }}&nbsp;&nbsp; | &nbsp;&nbsp;
       <span id="facility-type">{{ listing.for.equipment.powerType }} </span>
       <br>
@@ -83,12 +121,23 @@
       <br>
       <span> {{listing.location.city}}, {{listing.location.state}}</span>
       <br>
+      </a>
 
-      <label for="facility-description"> Equipment Description: </label>
+      <div class="meta">
+        <span>Description</span>
+      </div>
+      <div class="description">
       <span   id="facility-description">{{ listing.additionalInfo }}</span>
       <br>
+      </div>
+      <div class="extra">
+        <button class="ui blue button">Additional Details</button>
+      </div>
+    </div>
+  </div>
+  </div>
 
-      <label for="facility-notes"> Additional Notes: </label>
+      <!-- <label for="facility-notes"> Additional Notes: </label>
       <span   id="facility-notes">{{ listing.for.equipment.extras }}</span>
       <br>
 
@@ -104,31 +153,49 @@
         || listing.for.equipment.isHazardous === undefined"> No </span>
       <br>
       <br>
-    </div>
+    </div> -->
 
   <!-- SERVICE -->
-    <div *ngIf="filteredCategory === 'service'">
+    <div class="ui items" *ngIf="filteredCategory === 'service'">
+
+        <div class="item stylish">
+    <div class="image">
+      <img src="http://lorempixel.com/120/120" />
+    </div>
+    <div class="content">
+      <a class="header">
       {{ listing.title }}&nbsp;&nbsp; | &nbsp;&nbsp;
       <span *ngIf="listing.for.service.physicalOnly === true"> Online </span>
       <span *ngIf="listing.for.service.physicalOnly === false
         || listing.for.service === undefined"> Physical Location </span>
       <br>
-      <br>
-
       <span>By: {{ listing.provider }}</span>
       <br>
       <span> {{listing.location.city}}, {{listing.location.state}}</span>
       <br>
+      </a>
 
-      <label for="facility-notes"> Service Description: </label>
-      <span   id="facility-notes">{{ listing.for.service.description }}</span>
+      <div class="meta">
+        <span>Description</span>
+      </div>
+      <div class="description">
+      <span   id="facility-description">{{ listing.for.service.description }}</span>
       <br>
+      </div>
+      <div class="extra">
+        <button class="ui blue button">Additional Details</button>
+      </div>
+    </div>
+   </div>
+
+
+      <!-- <label for="facility-notes"> Service Description: </label>
+
 
       <label for="facility-description"> Additional Info: </label>
       <span   id="facility-description">{{ listing.additionalInfo }}</span>
-      <br>
-
-    </div>
+      <br> -->
+     </div>
       <!-- DO NOT PUT ANY LISTING SPECIFIC ELEMENTS BELOW THIS LINE -->
 
     </div>
