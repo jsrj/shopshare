@@ -119,6 +119,9 @@ export class AppComponent implements OnInit {
     this.activeView = 'home';
     this.toggleMenu();
   }
+  refreshHome() {
+    this.activeView = 'home';
+  }
   loadProfile() {
     this.activeView = 'profile';
   }

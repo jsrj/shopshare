@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router            } from '@angular/router';
 import { Http              } from '@angular/http';
 import { AuthService       } from '../auth.service';
+import { AppComponent } from '../app.component';
 
 import { environment       } from '../../environments/environment';
 
@@ -18,7 +19,8 @@ export class HomeComponent implements OnInit {
   (
     private RouterControl: Router,
     private HttpTransport: Http,
-    private AuthOperator:  AuthService
+    private AuthOperator:  AuthService,
+    private mainApp:       AppComponent
   ) { }
     allListings:      any = [];
     filteredListings: any = [];
@@ -77,8 +79,26 @@ export class HomeComponent implements OnInit {
             console.log(this.allListings);
           });
         }
-  consoleOutput() {
-    console.log(this.allListings);
+  delete(id) {
+    this.HttpTransport.delete(`${environment.apiBase}/listing/delete/${id}`)
+    .toPromise()
+    .then(res => {
+      res.json();
+      console.log(res.json);
+    });
+    this.refreshView();
+    console.log('deleting ' + id);
+  }
+
+  addToFavorites(listingID) {
+    this.HttpTransport.post(`${environment.apiBase}/listing/save` , {listingID: listingID})
+    .toPromise()
+    .then(res => {
+      res.json();
+  });
+  }
+  refreshView() {
+    this.mainApp.refreshHome();
   }
   ///// -[@]- [ VIEW ALL LISTINGS ] ----- -END-
 

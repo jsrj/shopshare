@@ -1,7 +1,7 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "project": {
-    "name": "shopshare"
+    "name": "BuilderShare.co"
   },
   "apps": [
     {
@@ -20,7 +20,7 @@
       "prefix": "app",
       "styles": [
         "styles.css",
-        "../src/assets/libraries/semantic/semantic.css"
+        "../src/assets/libraries/semantic/semantic.simplex.css"
       ],
       "scripts": ["../node_modules/jquery/dist/jquery.js",
                   "../src/assets/libraries/semantic/semantic.js"

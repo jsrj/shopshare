@@ -1,8 +1,8 @@
-
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css">
 
 <!--TOP NAV AND SIDE MENU -->
   <div id="menu-container">
-    <div class="ui inverted menu" id="main-menu">
+    <div class="ui menu" id="main-menu">
 
     <!-- POPOUT MENU TRIGGER BUTTON -->
       <div (click)="toggleMenu()" class="item mini-menu">
@@ -22,7 +22,7 @@
     <!-- LISTINGS SEARCH INTERFACE -->
 
     <!-- POPOUT NAV MENU -->
-      <div class="ui left vertical inverted labeled icon sidebar menu push overlay hidden">
+      <div class="ui left vertical labeled icon sidebar menu push overlay hidden">
           <a (click)="navigateHome()" class="item"><i class="home icon">         </i> Home           </a>
           <a (click)="navigateFrnd()" class="item"><i class="bookmark icon">     </i> Favorites      </a>
           <a (click)="navigateSrvc()" class="item"><i class="newspaper icon">    </i> My Listings    </a>
@@ -36,7 +36,7 @@
     <!-- POPOUT NAV MENU -->
 
     <!-- POPOUT USER MENU -->
-      <div class="ui right vertical inverted sidebar menu push overlay hidden" id="user-menu">
+      <div class="ui right vertical sidebar menu push overlay hidden" id="user-menu">
           <a class="user-menu item" (click)="editProfile()"      ><span class="item-inner-text">Edit Profile </span></a>
           <a class="user-menu item" (click)="viewProfile()"      ><span class="item-inner-text">View Profile </span></a>
           <a class="user-menu item" (click)="viewNotifications()"><span class="item-inner-text">Notifications</span></a>
@@ -45,7 +45,7 @@
     <!-- POPOUT USER MENU -->
 
     <!-- RIGHT HAND MENU -->
-        <div id="login" class="ui inverted right aligned menu">
+        <div id="login" class="ui right aligned menu">
 
               <a *ngIf="!activeSession" (click)="register()" class="item"> Sign Up  </a>
               <a *ngIf="!activeSession" (click)="login()"    class="item"> Log In   </a>
@@ -59,7 +59,7 @@
     <!-- RIGHT HAND MENU -->
 
   <!-- SUB-MENU -->
-    <div class="ui inverted top attached tabular menu" id="sub-menu">
+    <div class="ui top attached tabular menu" id="sub-menu">
       <a (click)="sortByFacility()" id="facility" class="item">  Facilities</a>
       <a (click)="sortByEquipmnt()" id="equipmnt" class="item">  Equipment </a>
       <a (click)="sortByServices()" id="services" class="item">  Services  </a>
@@ -140,8 +140,3 @@
     <app-registration></app-registration>
   </div>
 <!-- REGISTRATION FORM COMPONENT -->
-
-<!-- BACKUP SCRIPT LINKING -->
-  <script src="../assets/libraries/jquery.js"></script>
-  <script src="../assets/libraries/semantic/semantic.js"></script>
-<!-- BACKUP SCRIPT LINKING -->

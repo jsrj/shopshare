@@ -1,37 +1,68 @@
-.card {
-  display: flex;
-  width: 80vw !important;
-  float: right;
-}
-
-.image-tile {
-  border: 1px solid pink;
-  margin: 2% 20px;
-  padding: 30px;
-  display: flex;
-  flex-direction: row;
-  float: left;
-  background: white;
-  width: 100px !important;
-  height: 100px !important;
-}
-
-.content {
-  border: 1px solid blue;
-  margin: 5px;
-  padding: 8px;
-  width: 80vw;
-}
-
-.stylish {
-  background: #6894af !important;
-  border: none !important;
-  border-radius: 3px !important;
-  padding: 5px !important;
+   .card {
+    margin: 2px !important;
 }
 
 .image {
   position: relative;
   display: flex !important;
   z-index: 1 !important;
+  width: 395px !important;
+  border-radius: 0px !important;
+
+}
+
+.custom-card {
+  width: fit-content !important;
+  border: 0px !important;
+  box-shadow: none !important;
+  overflow: hidden !important;
+}
+
+.content {
+  margin: 0 !important;
+  border: 0px !important;
+}
+
+.admin-buttons {
+  display: flex;
+  width: fit-content !important;
+}
+
+.container {
+  margin: 6px;
+}
+
+.ui .cards {
+  width: fit-content !important;
+  margin: 0 auto !important;
+}
+/* UNCOMMENT TO COLORIZE BORDERS BY FACILITY TYPE */
+/* .facility {
+  border: 2px solid purple !important;
+}
+
+.equipment {
+  border: 2px solid orange !important;
+}
+
+.service {
+  border: 2px solid blue !important;
+} */
+
+
+.favorite {
+  display: flex;
+  border: 2px solid #ADADAD !important;
+  background: #ADADAD;
+  border-radius: 100%;
+  width: 25px;
+  height: 25px;
+  float: right;
+  padding: 1% 0;
+}
+
+.centered {
+  display: flex;
+  margin: 1px auto !important;
+  width: fit-content !important;
 }

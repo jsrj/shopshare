@@ -1,4 +1,4 @@
-.modalform {
+  .modalform {
   width: 80vw;
   height: fit-content;
   padding: 5vw;
@@ -13,8 +13,6 @@
 
 input {
   width: min-content;
-  /* color: white !important; */
-  /* background: #3482aa; */
   border: none;
   border-radius: 3px;
   padding: 3px;

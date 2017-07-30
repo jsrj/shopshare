@@ -1,4 +1,4 @@
-.userspace {
+  .userspace {
   background-color: transparent;
   border: none !important;
   border-radius: 5px !important;
@@ -19,7 +19,6 @@
 }
 
 .choice-button-container {
-  /* width: 30vw; */
   margin: 0 auto !important;
   background: transparent;
   margin-bottom: 10px !important;
