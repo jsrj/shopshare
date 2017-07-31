@@ -2,6 +2,10 @@
     margin: 2px !important;
 }
 
+.ui .cards {
+  justify-content: center !important;
+}
+
 .image {
   position: relative;
   display: flex !important;
